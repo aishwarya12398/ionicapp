@@ -1,0 +1,23 @@
+.speaker-detail img {
+  max-width: 140px;
+  border-radius: 50%;
+}
+
+.speaker-detail p {
+  color: #60646b;
+}
+.watcher-card
+{
+   border: 1px solid #aaaaaa;
+   border-radius: 5px;
+   box-shadow: rgba(0,0,0,.3) 2px 2px 5px;
+   margin: 15px;
+   padding: 10px;
+
+   label
+   {
+      font-size: large;
+      font-weight: bold;
+      text-transform: capitalize;
+   }
+}

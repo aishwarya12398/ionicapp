@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>Watchers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>List of Watchers</h2>
+  
+  <!-- <ng-template *ngIf="watchers!==null"> -->
+  <div *ngFor="let w of watchers" class="watcher-card">
+      <label>{{w.name}} </label><br/>
+      {{w.contact}}<br/>
+      {{w.email}}<br/>
+     
+     <!-- <ion-toggle [(ngModel)]="w.enabled"></ion-toggle>-->
+      <ion-button color='danger'>Remove</ion-button>
+  </div>
+  <!-- </ng-template> -->
+
+</ion-content>

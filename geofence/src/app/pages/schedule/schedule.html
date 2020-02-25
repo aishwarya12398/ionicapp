@@ -1,0 +1,61 @@
+
+
+    <ion-content id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Add Watchers</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <div class="addwatcher-logo">
+        <img src="assets/img/img1.png" alt="addwatcher Logo">
+      </div>
+
+      <form #addwatcherForm="ngForm" novalidate>
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Watcher Name</ion-label>
+            <ion-input [(ngModel)]="watcher.name" name="watchername" type="text" #watchername="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-text color="danger">
+            <p [hidden]="watchername.valid || submitted == false" class="ion-padding-start">
+              watchername is required
+            </p>
+          </ion-text>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Contact</ion-label>
+            <ion-input [(ngModel)]="watcher.contact" name="contact" type="text" #contact="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-text color="danger">
+            <p [hidden]="contact.valid || submitted == false" class="ion-padding-start">
+              valid contact is required
+            </p>
+          </ion-text>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Email</ion-label>
+            <ion-input [(ngModel)]="watcher.email" name="email" type="text" #email="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-text color="danger">
+            <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
+              valid email is required
+            </p>
+          </ion-text>
+        </ion-list>
+
+        <div class="ion-padding">
+          <ion-button (click)="onAdd(addwatcherForm)" type="submit" expand="block">Add</ion-button>
+        </div>
+        <span *ngIf="message!==null">{{message}}</span>
+      </form>
+
+
+    </ion-content>
+
+  <!-- </ion-split-pane> -->
+<!-- </ion-app> -->

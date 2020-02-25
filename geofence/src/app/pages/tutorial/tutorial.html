@@ -1,0 +1,40 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen >
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false">
+    <ion-slide>
+      <img src="assets/img/slide5.png" class="slide-image" />
+      <h2 class="slide-title">
+        Welcome to
+        <b>Geofencing Application</b>
+      </h2>
+     </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slide6.jpg" class="slide-image" />
+      <h2 class="slide-title"></h2>
+       </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slide2.jpeg" class="slide-image" />
+      <h2 class="slide-title">When alert is sent?</h2>
+      <p>Program incorporate geo-fencing allow system to set up triggers so when a device exits the boundaries defined by the geo-fence, a text message or email alert is sent.
+        </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/slide3.jpeg" class="slide-image" />
+      <h2 class="slide-title">Ready to Play?</h2>
+      <ion-button fill="clear" (click)="startApp()">
+        Continue
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
