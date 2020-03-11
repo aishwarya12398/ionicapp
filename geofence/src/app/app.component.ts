@@ -21,6 +21,7 @@ import { UserContext } from './user-context';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
+  message = null;
   appPages = [
     {
       title: 'Add Watchers',
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit {
       icon: 'information-circle'
     }
   ];
- 
+
   dark = false;
 
   constructor(
@@ -56,8 +57,8 @@ export class AppComponent implements OnInit {
     private userData: UserData,
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
-    private http: HttpClient, 
-    public uc: UserContext, 
+    private http: HttpClient,
+    public uc: UserContext,
     private navController: NavController
   ) {
     this.initializeApp();
@@ -71,19 +72,19 @@ export class AppComponent implements OnInit {
         if (this.uc.user) {
           console.log('Sending location');
           const userid = this.uc.user['userid'];
-          
+
           this.http.post(Constants.BASE_URL + '/addLocationWithLocationlog', {
             userid: userid,
             latitude: pos.coords.latitude,
             longitude: pos.coords.longitude,
-            triggeredstatus:this.uc.triggeredStatus
+            triggeredstatus: this.uc.triggeredStatus
           }).subscribe((res) => {
             console.log(res);
           });
         }
       });
     }, 2000);
-  
+
   }
 
   initializeApp() {
@@ -93,15 +94,22 @@ export class AppComponent implements OnInit {
     });
   }
 
-  
+
   logout() {
     this.http.post(Constants.BASE_URL + "/logout", { userid: this.uc.user['userid'], token: this.uc.token }).subscribe((result) => {
       console.log("Result", result);
+      
       if (result['status'] === 'success') {
-        this.navController.navigateRoot('/signin');
+        this.uc.loggedIn = false;
+        this.uc.user = null;
+        this.uc.token = null;
+        this.message="Logout Successfully";
+        
+        this.navController.navigateRoot('/login');
         return;
       }
       else {
+          this.message="Logout Failed";
 
       }
     });

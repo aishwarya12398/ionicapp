@@ -28,7 +28,7 @@ export class SpeakerListPage {
     ngOnInit() {
       let request = {};
       if (!this.uc.user) {
-        this.navController.navigateRoot('/signin');
+        this.navController.navigateRoot('/login');
         return;
       }
       request['userid'] = this.uc.user['userid'];
