@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckTutorial } from './providers/check-tutorial.service';
+import { SetCredentialComponent } from './set-credential/set-credential.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'set-credential/:userid/:token',
+    component: SetCredentialComponent
   },
   {
     path: 'account',
