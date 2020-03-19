@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { UserContext } from './../../user-context';
 
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserData } from '../../providers/user-data';
@@ -21,13 +21,13 @@ export class LoginPage {
   login: UserOptions = { username: '', password: '' };
   submitted = false;
   message = null;
+  loginform: FormGroup;
 
   constructor(public router: Router, private http: HttpClient, private uc: UserContext
     ) { }
     onLogin(form: NgForm) {
       this.submitted = true;
-  
-      this.http.post(Constants.BASE_URL + "/login", this.login).subscribe((result) => {
+       this.http.post(Constants.BASE_URL + "/login", this.login).subscribe((result) => {
         console.log("Result", result);
         if (result['status'] === 'success') {
           this.uc.token = result['token'];
@@ -48,7 +48,13 @@ export class LoginPage {
       this.router.navigateByUrl('/signup');
     }
   
-    ngOnInit() { }
+    ngOnInit() { 
+      this.loginform = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+     
+    });
+  }
   
   
 }

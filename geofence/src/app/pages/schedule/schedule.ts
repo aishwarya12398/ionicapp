@@ -5,7 +5,7 @@ import { AlertController, IonList, LoadingController, ModalController, ToastCont
 import { AddWatcher } from 'I:/BE Project/IonicApp/geofence/src/app/interfaces/add-watcher';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from './../../constants';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 
@@ -21,7 +21,7 @@ export class SchedulePage implements OnInit {
   watcher: AddWatcher = { userid: '', token: '', name: '', contact: '', email: '' };
   submitted = false;
   message = null;
-
+  addwatcherform: FormGroup;
 
 
 
@@ -39,6 +39,13 @@ export class SchedulePage implements OnInit {
       this.navController.navigateRoot('/login');
       return;
     }
+
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+      this.addwatcherform = new FormGroup({
+        watchername: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(10)]),
+        contact: new FormControl('', [Validators.required, Validators.pattern('[7-9]{1}[0-9]{9}')]),
+        email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+      });
   }
 
   onAdd(form: NgForm) {
@@ -56,11 +63,7 @@ export class SchedulePage implements OnInit {
       }
     });
 
+
   }
-
-
-
-
-
 
 }
