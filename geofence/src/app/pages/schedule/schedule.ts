@@ -2,7 +2,7 @@ import { UserContext } from './../../user-context';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, IonList, LoadingController, ModalController, ToastController, Config, NavController } from '@ionic/angular';
-import { AddWatcher } from 'I:/BE Project/IonicApp/geofence/src/app/interfaces/add-watcher';
+import { AddWatcher } from './../../interfaces/add-watcher';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from './../../constants';
 import { NgForm } from '@angular/forms';
