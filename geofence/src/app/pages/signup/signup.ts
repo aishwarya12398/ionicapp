@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Constants } from './../../constants';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +21,7 @@ export class SignupPage {
   signup: UserSignup = { username: '', password: '', contact: '', email:'' };
   submitted = false;
   message = null;
-
+  signupform: FormGroup;
   constructor(public router: Router, private http: HttpClient) {
 
   }
@@ -39,4 +39,15 @@ export class SignupPage {
       }
     });
   }
+  
+  ngOnInit() {
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    this.signupform = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(10)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+      contact: new FormControl('', [Validators.required, Validators.pattern('[7-9]{1}[0-9]{9}')]),
+      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+    });
+  }
+  
 }
