@@ -1,7 +1,8 @@
+import { UploadLocationPage } from './pages/upload-location/upload-location.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckTutorial } from './providers/check-tutorial.service';
-import { SetCredentialComponent } from './set-credential/set-credential.component';
+// import { SetCredentialComponent } from './set-credential/set-credential.component';
 
 const routes: Routes = [
   {
@@ -9,13 +10,18 @@ const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full'
   },
-  {
-    path: 'set-credential/:userid/:token',
-    component: SetCredentialComponent
-  },
+  // {
+  //   path: 'set-credential/:userid/:token',
+  //   component: SetCredentialComponent
+  // },
   {
     path: 'account',
     loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule)
+  },
+  {
+    path: 'upload',
+    // loadChildren: () => import('./pages/upload-location/upload-location.module').then(m => m.UploadLocationPageModule)
+    component: UploadLocationPage
   },
   {
     path: 'support',
@@ -37,7 +43,12 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
     canLoad: [CheckTutorial]
+  },
+  {
+    path: 'upload-location',
+    loadChildren: () => import('./pages/upload-location/upload-location.module').then( m => m.UploadLocationPageModule)
   }
+
 ];
 
 @NgModule({

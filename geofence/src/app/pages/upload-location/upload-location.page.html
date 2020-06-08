@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Upload Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="upload-location">
+    <img src="assets/img/img1.png" alt="map logo">
+  </div>
+
+  <form novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked" color="primary">latitude</ion-label>
+        <ion-input  [(ngModel)]="latitude" name="latitude" type="number"  spellcheck="false"
+          autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+
+     
+   
+      <ion-item>
+        <ion-label position="stacked" color="primary">longitude</ion-label>
+        <ion-input [(ngModel)]="longitude" name="longitude" type="number"  required>
+        </ion-input>
+      </ion-item>
+
+     
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="onUpload()" type="submit" expand="block">Submit</ion-button>
+      </ion-col>
+     
+    </ion-row>
+    <!-- <span *ngIf="message!==null">{{message}}</span> -->
+  </form>
+
+</ion-content>

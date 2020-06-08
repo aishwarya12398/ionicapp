@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SetCredentialComponent } from './set-credential.component';
+import { UploadLocationPage } from './upload-location.page';
 
-describe('SetCredentialComponent', () => {
-  let component: SetCredentialComponent;
-  let fixture: ComponentFixture<SetCredentialComponent>;
+describe('UploadLocationPage', () => {
+  let component: UploadLocationPage;
+  let fixture: ComponentFixture<UploadLocationPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SetCredentialComponent ],
+      declarations: [ UploadLocationPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SetCredentialComponent);
+    fixture = TestBed.createComponent(UploadLocationPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

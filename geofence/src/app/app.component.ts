@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
       icon: 'eye'
     },
     {
-      title: 'Users Watched',
-      url: '/app/tabs/map',
+      title: 'Upload Location',
+      url: '/upload',
       icon: 'contacts'
     },
     {
@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
           });
         }
       });
-    }, 2000);
+    }, 60000);
 
   }
 
