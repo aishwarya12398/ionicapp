@@ -17,7 +17,7 @@
       {{w.email}}<br/>
      
      <!-- <ion-toggle [(ngModel)]="w.enabled"></ion-toggle>-->
-      <ion-button color='danger'>Remove</ion-button>
+      <ion-button (click)="onRemove(w.name)" color='danger'>Remove</ion-button>
   </div>
   <!-- </ng-template> -->
 

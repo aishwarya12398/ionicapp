@@ -24,13 +24,28 @@ export class SpeakerListPage {
     private navController: NavController, 
     private activateRoute: ActivatedRoute
     ) {}
+    onRemove(name:String)
+    {
+      let request = {};
+      request['userid'] = this.uc.user['userid'];
+      request['watchername'] = name;
+      this.http.post(Constants.BASE_URL + "/removeWatcher",request).subscribe((result) => {
+        console.log("Result", result);
+        this.fetchWatchers();         
+      });
+   
+    }
 
     ngOnInit() {
-      let request = {};
       if (!this.uc.user) {
         this.navController.navigateRoot('/login');
         return;
       }
+      this.fetchWatchers();
+    }
+
+    public fetchWatchers(){
+      let request = {};
       request['userid'] = this.uc.user['userid'];
       this.http.post(Constants.BASE_URL + "/getWatchers", request).subscribe((result) => {
         console.log("Result", result);
